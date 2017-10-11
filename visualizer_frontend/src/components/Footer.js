@@ -5,7 +5,12 @@ import React from 'react'
 class Footer extends React.Component{
 
   render(){
-    return(<div> <h1>Footer </h1></div>)
+    return(
+      <div class="ui inverted vertical footer segment form-page">
+        <div class="ui container">
+          Travel Match 2015. All Rights Reserved
+        </div>
+      </div>)
   }
 }
 
