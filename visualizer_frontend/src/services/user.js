@@ -1,6 +1,7 @@
 export function loginUser(loginParams) {
 
   const body = JSON.stringify(loginParams)
+  debugger
   return fetch("http://localhost:3000/api/v1/login", {
     method: 'post',
     body: body,
@@ -10,6 +11,7 @@ export function loginUser(loginParams) {
     }
   })
     .then((res) => res.json())
+
 }
 
 

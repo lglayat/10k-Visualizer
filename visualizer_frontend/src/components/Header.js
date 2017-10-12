@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, Redirect } from 'react-router-dom'
+import 'semantic-ui-css/semantic.min.css'
 
 
 const Header = (props) => {
@@ -25,7 +26,7 @@ const Header = (props) => {
     </a>
 
     {/*
-      
+
       <a className="item">
         <NavLink to="/apod">APOD</NavLink>
       </a>

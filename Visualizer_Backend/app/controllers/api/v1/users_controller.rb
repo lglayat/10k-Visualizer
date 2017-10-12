@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
   	# @user = User.find_by(id: params[:id])
     if @user
-      render json: { curiosities: @user.curiosities}
+      render json: { user: @user}
     else
       render json: { message: "Error"}
     end
