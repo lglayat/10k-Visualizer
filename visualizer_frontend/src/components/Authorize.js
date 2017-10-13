@@ -9,7 +9,7 @@ function Authorize(RenderedComponent, props) {
 
 			if (localStorage.getItem('jwtToken') && this.props.location.pathname === "/login") {
 				console.log("Logged in but on login")
-				return (<Redirect to="/homepage" />)
+				return (<Redirect to="/" />)
 			} else if (!localStorage.getItem('jwtToken') && this.props.location.pathname !== "/login") {
 				console.log("Not logged in")
 				return (<Redirect to="/login"/>)

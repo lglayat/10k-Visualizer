@@ -5,11 +5,16 @@
   "dependencies": {
     "draft-js": "^0.10.3",
     "draft-js-emoji-plugin": "2.0.0-rc2",
+    "karma": "^1.7.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-dropzone": "^4.2.0",
+    "react-file-reader-input": "^1.1.4",
     "react-history": "^0.18.2",
+    "react-pdf-component": "0.0.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
+    "redux": "^3.7.2",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.74.2",
     "yarn": "^1.2.0"

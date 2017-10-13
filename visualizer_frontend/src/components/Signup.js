@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
 class Signup extends React.Component {
 
@@ -14,7 +15,6 @@ class Signup extends React.Component {
 
   }
 
-
   handlePasswordChange = (event) => {
     this.setState({
       password: event.target.value
@@ -29,9 +29,15 @@ class Signup extends React.Component {
     if(this.state.username && this.state.password){
       var loginParams = { username: this.state.username, password: this.state.password}
     }
+
+
     console.log(loginParams)
+
+
     const body = JSON.stringify(loginParams)
-    return fetch("http://localhost:3000/users", {
+
+
+    fetch("http://localhost:3000/api/v1/signup", {
       method: 'post',
       body: body,
       headers: {
@@ -39,12 +45,18 @@ class Signup extends React.Component {
         "Content-Type":"application/json"
       }
     })
+    .then(resp => {
+      this.setState({
+        username: "",
+        password: ""
+      })
 
-    this.setState({
-      username: "",
-      password: ""
     })
+    .then(resp => this.props.history.replace('/', null))
+
   }
+
+
   render() {
       return (
         <div>
