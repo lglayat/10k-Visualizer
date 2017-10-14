@@ -1,24 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+#Create Dummy Users
 luke = User.create({username: "luke", password: "a"})
 dean = User.create({username: "dean", password: "a"})
+roman = User.create({username: "roman", password: "a"})
 
-pdf2 =  IO.binread('/Users/mac/Desktop/Development/Projects/10-k_wizard/Visualizer_Backend/db/docs/doc1.pdf')
-# word2 = IO.binread('/Users/mac/Desktop/Development/Projects/10-k_wizard/Visualizer_Backend/db/doc2.docx')
-# txt2 = IO.binread('/Users/mac/Desktop/Development/Projects/10-k_wizard/Visualizer_Backend/db/doc3.txt')
+#Instantiate the types of Categories
+categories = ["History", "Science", "Math", "Law", "Religion", "Languages", "Art", "Computer Science", "Finance", "Accounting", "Music", "Engineering", "Education", "Other"]
+history = Category.create({name: categories[0]})
+science = Category.create({name: categories[1]})
+math = Category.create({name: categories[2]})
+law = Category.create({name: categories[3]})
+religion = Category.create({name: categories[4]})
+lang = Category.create({name: categories[5]})
+art = Category.create({name: categories[6]})
+cs = Category.create({name: categories[7] })
+finance = Category.create({name: categories[8] })
+acct = Category.create({name: categories[9]})
+music = Category.create({name: categories[10]})
+engineering = Category.create({name: categories[11]})
+edu = Category.create({name: categories[12]})
+other = Category.create({name: categories[13]})
 
+#Create dummy notes
+chemNote = Note.create({title: 'Chemistry Note', doc: 'Periodic table of elements, hydrogen, oxygen, helium, methane. Kennny is the greatest doctor in the world. He told me I sound sick so I shoudl drink some water'})
+histNote = Note.create({title: 'History Note', doc: 'The declaration of indepence was signed in 1776. In 2030 Guy Fieri annexed Cuba and renamed Havana Flavortown'})
+mathNote = Note.create({title: 'Math Note', doc: 'Derivatives are extremely confusing and I hate them. Good thing there are sites like khan academy to study from . E = MC^2'})
 
-Bob.create({data: pdf2})
+#Make dummy users have some notes
+luke.notes << chemNote
+roman.notes << histNote
+dean.notes << mathNote
 
-ex1 = Note.create({title: 'Chemistry Ex', doc: 'Periodic table of elements, hydrogen, oxygen, helium, methane.'})
-ex2 = Note.create({title: 'History Ex', doc: 'The declaration of indepence was signed in 1776'})
-ex3 = Note.create({title: 'Math Ex', doc: 'Derivatives are extremely confusing and I hate them'})
-luke.notes << ex1
-luke.notes << ex2
-dean.notes << ex3
+#Associate Notes with a category
+chemNote.category = science
+histNote.category = history
+mathNote.category = math

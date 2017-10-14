@@ -25,19 +25,21 @@ class ProfilePage extends React.Component {
 
 
 	render() {
-    console.log(this.props)
+    console.log(this.state.notes)
 
     let notes = null
 
     if( this.state.notes ){
-      notes = this.state.notes.map( note => <NoteCard title={note.title} body={note.doc} /> )
+      notes = this.state.notes.map( note => <NoteCard id={note.id} title={note.title} body={note.doc} /> )
     }
 
 		return (
 			<div>
 
-        <FileUploader />
-        <p>Welcome to your user page </p>
+        <h1>Welcome to your user page </h1>
+
+          <FileUploader currentUser={this.props.currentUser} />
+        <br/>
 
           {notes}
 

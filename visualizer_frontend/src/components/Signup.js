@@ -30,12 +30,7 @@ class Signup extends React.Component {
       var loginParams = { username: this.state.username, password: this.state.password}
     }
 
-
-    console.log(loginParams)
-
-
     const body = JSON.stringify(loginParams)
-
 
     fetch("http://localhost:3000/api/v1/signup", {
       method: 'post',
@@ -50,7 +45,6 @@ class Signup extends React.Component {
         username: "",
         password: ""
       })
-
     })
     .then(resp => this.props.history.replace('/', null))
 

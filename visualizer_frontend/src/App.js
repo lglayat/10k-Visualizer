@@ -13,7 +13,10 @@ import Homepage from './components/Homepage'
 import './App.css';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
+import NotesContainer from './components/NotesContainer'
+import CategoryContainer from './components/CategoryContainer'
+import NoteShowPage from './components/NoteShowPage'
+import Background from './resources/img/background.png';
 
 
 class App extends Component {
@@ -53,15 +56,27 @@ class App extends Component {
     const AuthLoginForm = Authorize(LoginForm)
     const ProfileContainer = Authorize(ProfilePage)
 
+    const style = {
+      width: "100%",
+      height: "400px",
+      'background-repeat': 'no-repeat',
+      backgroundImage: `url(${Background})`,
+      'background-size': 'cover'
+    };
+
     return (
       <div className="App">
         <Header handleLogout={this.logout} name={this.state.name} />
-
+        <div style={style}>
           <Route exact path='/' render={(props) => <Homepage />} />
           <Route exact path="/profile" render={(props) => <ProfileContainer currentUser={this.state.id} {...props} />}/>
           <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
           <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
+          <Route exact path='/notes/:id' render={(props) => <NoteShowPage noteId={NoteShowPage.id} {...props} /> } />
+          <Route exact path='/notes' render={(props) => <NotesContainer {...props} /> } />
+          <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
 
+        </div>
           {/*<Footer /> */}
       </div>
     );
