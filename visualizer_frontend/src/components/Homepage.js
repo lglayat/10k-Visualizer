@@ -11,10 +11,11 @@ class Homepage extends React.Component{
     }
 
 
-    return(<div  >
-            <h1>Welcome!</h1>
-            <img src={Logo} alt="/" style={logoStyle} />
-            <Searchbar />
+    return(<div>
+            <div className="ui raised padded text container segment">
+              <img src={Logo} alt="/" style={logoStyle} />
+              <Searchbar />
+            </div>
           </div>
         )
   }

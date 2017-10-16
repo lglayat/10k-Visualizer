@@ -1,6 +1,5 @@
 import React from 'react'
 import { loginUser } from '../services/user'
-import { Redirect } from 'react-router-dom'
 import { signIn } from '../actions/user'
 import { connect } from 'react-redux'
 
@@ -16,9 +15,7 @@ class LoginForm extends React.Component {
     event.preventDefault()
     if(this.state.username && this.state.password){
       const loginParams = { username: this.state.username, password: this.state.password}
-      // this.props.onLogin(loginParams)
       this.props.signIn(loginParams, this.props)
-
       this.setState({
         username: "",
         password: ""

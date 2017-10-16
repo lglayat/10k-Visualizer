@@ -9,7 +9,7 @@ class Header extends React.Component{
   //localStorage.getItem('jwtToken') ? <div className="item" onClick={this.logout}> Log Out </div> :<div><div className="item"><NavLink to="/login">Login</NavLink></div><div className="item"><NavLink to="/signup">Sign up</NavLink></div></div> }
 
   showLogout = () => {
-    return <div className="item" onClick={this.logout}> Log Out </div>
+    return <div className="item" onClick={this.logout}><NavLink to="/">Log Out</NavLink></div>
   }
   showLogin = () => {
       return <div className="item"><NavLink to="/login">Login</NavLink></div>
@@ -36,8 +36,8 @@ class Header extends React.Component{
 
   render(){
       console.log(this.props.isLoggedIn)
-    return(<div className="ui tiny menu">
-        <a className="active item">
+    return(<div className="ui menu">
+        <a className="header item">
           <NavLink to="/">Home</NavLink>
         </a>
         <a className="item">
@@ -46,13 +46,22 @@ class Header extends React.Component{
 
         {this.showProfile()}
 
+
+        <div className='item'>
+        {this.poop()}
+        </div>
+
+
+        <div className='right menu'>
+
         {this.showLogout()}
 
         {this.showLogin()}
 
         {this.showSignup()}
 
-        {this.poop()}
+
+        </div>
       </div>)
   }
 }

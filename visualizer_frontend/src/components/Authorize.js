@@ -5,8 +5,6 @@ import { Redirect } from 'react-router-dom'
 function Authorize(RenderedComponent, props) {
 	return class extends React.Component {
 		render() {
-			console.log("Rendering from authorize")
-
 			if (localStorage.getItem('jwtToken') && this.props.location.pathname === "/login") {
 				console.log("Logged in but on login")
 				return (<Redirect to="/" />)

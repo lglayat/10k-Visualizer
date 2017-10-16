@@ -15,7 +15,7 @@ class NoteCard extends React.Component{
 
     return(<div className="ui raised card">
     <div className="content">
-      <a href={link}> Link to Note</a>
+      <a href={link}> View Note</a>
       <div className="header">{this.props.title}</div>
         <div className="description">
           <p>{preview}</p>

@@ -6,11 +6,12 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def create
-    binding.pry
-    @note = Note.create(doc: params["note"])
-    @user = User.find(params[:user])
-    @user.notes << @note
-    render json: @note
+    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"], user_id: params["user"])
+    @category = Category.find_by(name: params["note"]["category"])
+    @category.notes << @note
+    if @note.save!
+      render json: @note
+    end
   end
 
   def show

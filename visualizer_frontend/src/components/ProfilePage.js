@@ -1,7 +1,7 @@
 import React from 'react'
 import NoteCard from './NoteCard'
 import FileUploader from './FileUploader'
-import {connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 
 class ProfilePage extends React.Component {
@@ -30,19 +30,21 @@ class ProfilePage extends React.Component {
     let notes = null
 
     if( this.state.notes ){
-      notes = this.state.notes.map( note => <NoteCard id={note.id} title={note.title} body={note.doc} /> )
+      notes = this.state.notes.map( note =><div class="five wide column"><NoteCard id={note.id} title={note.title} body={note.doc} /></div> )
     }
 
 		return (
 			<div>
 
-        <h1>Welcome to your user page </h1>
+        <h1>Welcome {this.props.username}! </h1>
 
-          <FileUploader currentUser={this.props.currentUser} />
+          <FileUploader userId={this.props.userId} />
         <br/>
 
-          {notes}
 
+        <div className="ui grid">
+          {notes}
+        </div>
 			</div>
 		)
 	}

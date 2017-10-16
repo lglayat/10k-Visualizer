@@ -21,15 +21,16 @@ class CategoryContainer extends React.Component{
     let categories = null
 
     if( this.state.categories.length > 0 ){
-      categories = this.state.categories.map( category => <CategoryCard id={category.id} name={category.name} /> )
+      categories = this.state.categories.map( category => <div className="five wide column"><CategoryCard key={category.id} id={category.id} name={category.name} /></div> )
     }
-    console.log(this.state.categories)
-    return(
 
+    return(
       <div>
-        <h1> All Categories </h1>
-        {categories}
-      </div>)
+        <div className="ui grid">
+          {categories}
+        </div>
+    </div>
+    )
   }
 }
 

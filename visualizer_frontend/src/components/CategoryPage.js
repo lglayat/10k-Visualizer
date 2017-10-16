@@ -5,6 +5,7 @@ import NoteCard from './NoteCard'
 class CategoryPage extends React.Component{
 
   state = {
+    name: '',
     notes: []
   }
 
@@ -13,10 +14,12 @@ class CategoryPage extends React.Component{
     console.log(categoryId)
     const url = "http://localhost:3000/api/v1/categories/"
     fetch(url + categoryId)
-      .then(resp => resp.json())
+      .then(resp =>  resp.json())
       .then(resp => this.setState({
+        name: resp.name,
         notes: resp.notes
       }))
+      .then(resp => console.log(resp))
 
   }
 
@@ -29,7 +32,7 @@ class CategoryPage extends React.Component{
 
     return(
     <div className="ui container">
-      <h1>Welcome to the category show page</h1>
+      <h1>All {this.state.name} notes</h1>
       {notes}
     </div>
 	)}

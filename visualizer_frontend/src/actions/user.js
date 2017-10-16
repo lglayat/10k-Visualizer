@@ -14,7 +14,9 @@ export function signOutUser(user){
 
 
 export function signIn(user, props){
+
   return function(dispatch){
+
     const body = JSON.stringify(user)
     return fetch("http://localhost:3000/api/v1/login", {
       method: 'post',
