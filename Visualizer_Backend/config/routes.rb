@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get '/categories/:id', to: 'categories#show'
       get '/categories', to: 'categories#index'
       post '/login', to: 'auth#create'
+      post '/notes/search', to: 'notes#search'
       get '/notes/:id', to: 'notes#show'
       post '/notes/create', to: 'notes#create'
       get '/notes', to: 'notes#index'

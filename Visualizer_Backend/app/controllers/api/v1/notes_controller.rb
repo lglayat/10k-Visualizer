@@ -19,4 +19,16 @@ class Api::V1::NotesController < ApplicationController
     render json: @note
   end
 
+  def search
+    @arr = []
+
+		Note.all.each do |n|
+			if n.title.downcase.include?(params["value"].downcase)
+				@arr << n
+			end
+		end
+
+    render json: @arr
+  end
+
 end

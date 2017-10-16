@@ -9,8 +9,6 @@ import 'semantic-ui-css/semantic.min.css'
 import ProfilePage from './components/ProfilePage'
 import Homepage from './components/Homepage'
 import './App.css';
-import { connect } from 'react-redux'
-import NotesContainer from './components/NotesContainer'
 import CategoryContainer from './components/CategoryContainer'
 import NoteShowPage from './components/NoteShowPage'
 import Background from './resources/img/background.png';
@@ -52,7 +50,7 @@ class App extends Component {
           <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
           <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
           <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>
-          <Route exact path='/' render={(props) => <Homepage />} />
+          <Route exact path='/' render={(props) => <Homepage {...props} />} />
 
         </div>
           {/*<Footer />*/}

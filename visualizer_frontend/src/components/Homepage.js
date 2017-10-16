@@ -1,6 +1,8 @@
 import React from 'react'
 import Logo from '../resources/img/logo.png'
 import Searchbar from './Searchbar'
+import { Redirect } from 'react-router-dom'
+
 
 class Homepage extends React.Component{
 
@@ -13,8 +15,11 @@ class Homepage extends React.Component{
 
     return(<div>
             <div className="ui raised padded text container segment">
+
               <img src={Logo} alt="/" style={logoStyle} />
-              <Searchbar />
+
+              <Searchbar {...this.props} />
+
             </div>
           </div>
         )
