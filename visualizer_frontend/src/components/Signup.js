@@ -52,12 +52,16 @@ class Signup extends React.Component {
 
   render() {
       return (
-        <div>
-          <div>Enter a new username and password</div>
+        <div className='ui container'>
+          <h1>Enter a new username and password</h1>
           <form onSubmit={this.handleSubmit}>
+            <div class="ui input">
             <input type="text" name="username" placeholder="username" onChange={this.handleUsernameChange} value={this.state.username}/>
+            </div>
+            <div class="ui input">
             <input type="password" name="password" placeholder="password" onChange={this.handlePasswordChange} value={this.state.password}/>
-            <input type="submit" value="Submit"/>
+            </div>
+            <input className='ui button' type="submit" value="Submit"/>
           </form>
         </div>
       )

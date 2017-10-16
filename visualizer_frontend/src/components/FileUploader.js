@@ -86,8 +86,10 @@ class FileUploader extends React.Component {
             <option value="Education">Education</option>
             <option value="Other">Other</option>
           </select>
-
+          
+          <div class="ui input">
           <input type='text' placeholder='Enter your notes name' onChange={this.setTitle} />
+          </div>
           <button className="ui blue button" onClick={this.createNote}> Submit Note </button>
       </div>
     );

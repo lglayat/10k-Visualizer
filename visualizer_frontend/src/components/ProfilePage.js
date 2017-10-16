@@ -42,7 +42,7 @@ class ProfilePage extends React.Component {
         <br/>
 
 
-        <div className="ui grid">
+        <div className="ui center aligned grid">
           {notes}
         </div>
 			</div>

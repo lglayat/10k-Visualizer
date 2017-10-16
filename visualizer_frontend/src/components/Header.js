@@ -11,6 +11,7 @@ class Header extends React.Component{
   showLogout = () => {
     return <div className="item" onClick={this.logout}><NavLink to="/">Log Out</NavLink></div>
   }
+
   showLogin = () => {
       return <div className="item"><NavLink to="/login">Login</NavLink></div>
   }
@@ -24,45 +25,51 @@ class Header extends React.Component{
 
   logout = (props) => {
     this.props.signOut(this.props)
+    this.forceUpdate()
   }
 
-  poop = (props) => {
-    if(this.props.isLoggedIn === false){
-      return <div> NOT LOGGED IN</div>
-    } else {
+  loggedIn = (props) => {
+    if(!!localStorage.getItem("jwtToken")){
       return <div> LOGGED IN</div>
+    } else {
+      return <div>NOT LOGGED IN</div>
     }
   }
 
   render(){
-      console.log(this.props.isLoggedIn)
-    return(<div className="ui menu">
-        <a className="header item">
-          <NavLink to="/">Home</NavLink>
-        </a>
-        <a className="item">
-          <NavLink to="/categories">Categories</NavLink>
-        </a>
 
-        {this.showProfile()}
+    const hasToken = !!localStorage.getItem("jwtToken")
+
+    return(
+        <div className="ui menu">
+          <a className="header item">
+            <NavLink to="/">Home</NavLink>
+          </a>
+          <a className="item">
+            <NavLink to="/categories">Categories</NavLink>
+          </a>
+
+          {this.showProfile()}
 
 
-        <div className='item'>
-        {this.poop()}
+          <div className='right menu'>
+
+          { hasToken ?  <div className="item" onClick={this.logout}><NavLink to="/">Log Out</NavLink></div> : null }
+
+          { hasToken ? null : <div className="item"><NavLink to="/login">Login</NavLink></div> }
+
+          { hasToken ? null : <div className="item"><NavLink to="/signup">Sign up</NavLink></div> }
+
+          {/*this.showLogout()*/}
+
+          {/*this.showLogin()*/}
+
+          {/*this.showSignup()*/}
+
+
+          </div>
         </div>
-
-
-        <div className='right menu'>
-
-        {this.showLogout()}
-
-        {this.showLogin()}
-
-        {this.showSignup()}
-
-
-        </div>
-      </div>)
+    )
   }
 }
 

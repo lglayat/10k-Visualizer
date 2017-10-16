@@ -26,7 +26,7 @@ class CategoryContainer extends React.Component{
 
     return(
       <div>
-        <div className="ui grid">
+        <div className="ui center aligned grid">
           {categories}
         </div>
     </div>
