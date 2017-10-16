@@ -2,23 +2,20 @@ import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 
 
-class NoteCard extends React.Component{
+class CategoryCard extends React.Component{
 
 
   render(){
-    const link = '/notes/' + this.props.id
-    let preview = ''
+    const link = '/categories/' + this.props.id
 
-    if(this.props.body.length > 40){
-      preview = this.props.body.slice(0, 37) + "..."
-    }
-
-    return(<div className="ui raised card">
-    <div className="content">
-      <a href={link}> Link to Note</a>
-      <div className="header">{this.props.title}</div>
+    return(
+    <div className="ui raised card">
+      <div className="content">
+        <div className="header">
+          {this.props.name}
+        </div>
         <div className="description">
-          <p>{preview}</p>
+          <a href={link}>See Notes</a>
         </div>
       </div>
     </div>
@@ -26,4 +23,4 @@ class NoteCard extends React.Component{
 }
 
 
-export default NoteCard
+export default CategoryCard

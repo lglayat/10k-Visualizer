@@ -2,7 +2,7 @@ import React from 'react'
 import CategoryCard from './CategoryCard'
 
 
-class NotesContainer extends React.Component{
+class CategoryContainer extends React.Component{
 
   state = {
     categories: []
@@ -21,7 +21,7 @@ class NotesContainer extends React.Component{
     let categories = null
 
     if( this.state.categories.length > 0 ){
-      categories = this.state.categories.map( category => <CategoryCard id={category.id} body={category.doc} /> )
+      categories = this.state.categories.map( category => <CategoryCard id={category.id} name={category.name} /> )
     }
     console.log(this.state.categories)
     return(
@@ -33,4 +33,4 @@ class NotesContainer extends React.Component{
   }
 }
 
-export default NotesContainer
+export default CategoryContainer

@@ -1,7 +1,8 @@
 import React from 'react'
 import { loginUser } from '../services/user'
 import { Redirect } from 'react-router-dom'
-
+import { signIn } from '../actions/user'
+import { connect } from 'react-redux'
 
 class LoginForm extends React.Component {
 
@@ -13,27 +14,36 @@ class LoginForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log("Clicking Button", this.state.username, this.state.password)
-
     if(this.state.username && this.state.password){
       const loginParams = { username: this.state.username, password: this.state.password}
-      this.props.onLogin(loginParams)
+      // this.props.onLogin(loginParams)
+      this.props.signIn(loginParams, this.props)
+
       this.setState({
         username: "",
         password: ""
       })
-
     }
   }
 
+  login = (loginParams) => {
+    loginUser(loginParams)
+      .then((resp) => {
+        localStorage.setItem("jwtToken", resp.jwt)
+        this.setState({
+          user: resp,
+          isLoggedIn: true,
+          name: resp.user.username,
+          id: resp.user.id
+        })
+      })
+  }
 
   handleUsernameChange = (event) => {
     this.setState({
       username: event.target.value
     })
-
   }
-
 
   handlePasswordChange = (event) => {
     this.setState({
@@ -41,6 +51,7 @@ class LoginForm extends React.Component {
     })
 
   }
+
   render() {
       return (
         <div>
@@ -52,10 +63,17 @@ class LoginForm extends React.Component {
         </form>
         </div>
       )
-
   }
-
-
 }
 
-export default LoginForm
+export function mapDispatchToProps(dispatch){
+  return {
+    signIn: (user, props) => {
+      dispatch(signIn(user, props))
+    }
+  }
+}
+
+
+
+export default connect(null, mapDispatchToProps)(LoginForm)

@@ -24,6 +24,8 @@ class NotesContainer extends React.Component{
       notes = this.state.notes.map( note => <NoteCard id={note.id} title={note.title} body={note.doc} /> )
     }
 
+    console.log(this.state.notes)
+
     return(
       <div>
         <h1> All Notes </h1>

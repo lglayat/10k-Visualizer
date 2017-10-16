@@ -1,59 +1,70 @@
 import React from 'react'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
+import { signOut } from '../actions/user'
+import { connect } from 'react-redux'
 
+class Header extends React.Component{
 
-const Header = (props) => {
+  //localStorage.getItem('jwtToken') ? <div className="item" onClick={this.logout}> Log Out </div> :<div><div className="item"><NavLink to="/login">Login</NavLink></div><div className="item"><NavLink to="/signup">Sign up</NavLink></div></div> }
 
-  const logout = <div className="ui primary button" onClick={props.handleLogout}>Sign Out</div>
-  const logsign = <div><NavLink className="ui primary button" to="/login">Login</NavLink> <NavLink className="ui primary button" to="/signup">Sign up</NavLink></div>
-  const profileLink = <div className="item">{props.name ? <NavLink to="/profile">Profile</NavLink> : null }</div>
-  const greeting =   <div className="right menu"><div> You are logged in {props.name}</div></div>
+  showLogout = () => {
+    return <div className="item" onClick={this.logout}> Log Out </div>
+  }
+  showLogin = () => {
+      return <div className="item"><NavLink to="/login">Login</NavLink></div>
+  }
+  showSignup = () => {
+      return <div className="item"><NavLink to="/signup">Sign up</NavLink></div>
+  }
 
+  showProfile = () => {
+    return <div className="item"><NavLink to="/profile">Profile</NavLink></div>
+  }
 
-  const logButtons = () => {
-    if (localStorage.getItem('jwtToken')) {
-      return logout
+  logout = (props) => {
+    this.props.signOut(this.props)
+  }
+
+  poop = (props) => {
+    if(this.props.isLoggedIn === false){
+      return <div> NOT LOGGED IN</div>
     } else {
-      return (
-        logsign
-      )
+      return <div> LOGGED IN</div>
     }
   }
 
-  const greetingNotification = () => {
-    if (localStorage.getItem('jwtToken')) {
-      return greeting
-    } else {
-      return (
-        null
-      )
-    }
+  render(){
+      console.log(this.props.isLoggedIn)
+    return(<div className="ui tiny menu">
+        <a className="active item">
+          <NavLink to="/">Home</NavLink>
+        </a>
+        <a className="item">
+          <NavLink to="/categories">Categories</NavLink>
+        </a>
+
+        {this.showProfile()}
+
+        {this.showLogout()}
+
+        {this.showLogin()}
+
+        {this.showSignup()}
+
+        {this.poop()}
+      </div>)
   }
-
-  return(
-    <div className="ui tiny menu">
-      <a className="active item">
-        <NavLink to="/">Home</NavLink>
-      </a>
-
-      <a className="active item">
-        <NavLink to="/notes">Notes</NavLink>
-      </a>
-
-      {props.name ? profileLink : null }
-
-
-      {greetingNotification()}
-
-  		<div className="right menu">
-      	{logButtons()}
-      </div>
-
-  	</div>
-
-  )
-
 }
 
-export default Header
+
+
+function mapDispatchToProps(dispatch){
+  return {
+    signOut: (props) => {
+      dispatch(signOut(props))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Header)

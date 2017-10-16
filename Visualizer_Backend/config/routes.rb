@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
+      get '/categories/:id', to: 'categories#show'
       get '/categories', to: 'categories#index'
       post '/login', to: 'auth#create'
       get '/notes/:id', to: 'notes#show'

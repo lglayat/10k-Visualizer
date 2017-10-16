@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux';
 import './index.css';
+import thunk from 'redux-thunk'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom'
-import  cartReducer  from './reducers/cartReducer'
 import usersReducer from './reducers/usersReducer'
-import * as UserActions from './actions/user'
+import {autoRehydrate, persistStore } from 'redux-persist'
 
-const store = createStore( usersReducer , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
+
+const store = createStore( usersReducer , composeWithDevTools(applyMiddleware(thunk), autoRehydrate()))
+
+persistStore(store)
 
 ReactDOM.render(
     <Provider store={store} >

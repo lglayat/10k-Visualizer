@@ -1,6 +1,8 @@
 import React from 'react'
 import NoteCard from './NoteCard'
 import FileUploader from './FileUploader'
+import {connect } from 'react-redux'
+
 
 class ProfilePage extends React.Component {
 
@@ -9,10 +11,11 @@ class ProfilePage extends React.Component {
     curr: this.props.currentUser
   }
 
-	componentDidMount() {
-    const num = this.props.currentUser
+	componentDidMount(){
+    const num = this.props.userId
+
     const url = "http://localhost:3000/api/v1/users/"
-    console.log(num)
+    console.log(this.props)
   	fetch(url + num)
   	.then(resp => resp.json())
     .then(resp => {
@@ -22,10 +25,7 @@ class ProfilePage extends React.Component {
     )})
 	}
 
-
-
 	render() {
-    console.log(this.state.notes)
 
     let notes = null
 
@@ -48,4 +48,10 @@ class ProfilePage extends React.Component {
 	}
 }
 
-export default ProfilePage
+function mapStateToProps(state){
+  return{
+    user: state.userInfo
+  }
+}
+
+export default connect(mapStateToProps)(ProfilePage)
