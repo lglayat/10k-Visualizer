@@ -26,34 +26,35 @@ class App extends Component {
     const ProfileContainer = Authorize(ProfilePage)
 
     const wrapperStyle = {
-      'backgroundRepeat': 'no-repeat',
       backgroundImage: `url(${Background})`,
-      'backgroundSize': '100%',
-      height: '90vh'
     };
 
-    const innerStyle={
-      height: '100%',
-      minHeight: '100%'
+    const style={
+      marginBottom: '100px'
     }
 
-    console.log(this.props.store.getState())
+
     return (
-
       <div className="App" style={wrapperStyle}>
-        <Header id="header" isLoggedIn={isLoggedIn} {...this.props} />
-        <div className='' style={innerStyle} >
-          <Route exact path="/profile" render={(props) => <ProfileContainer username={username} userId={userId} {...props} />}/>
-          <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
-          <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
-          <Route exact path='/notes/:id' render={(props) => <NoteShowPage noteId={NoteShowPage.id} {...props} /> } />
-          <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
-          <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
-          <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>
-          <Route exact path='/' render={(props) => <Homepage {...props} />} />
 
+
+        <div className="content">
+          <Header id="header" isLoggedIn={isLoggedIn} {...this.props} />
+
+          <div id='content' style={style}  >
+            <Route exact path="/profile" render={(props) => <ProfileContainer username={username} userId={userId} {...props} />}/>
+            <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
+            <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
+            <Route exact path='/notes/:id' render={(props) => <NoteShowPage noteId={NoteShowPage.id} {...props} /> } />
+            <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
+            <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
+            <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>
+            <Route exact path='/' render={(props) => <Homepage {...props} />} />
+          </div>
+          <div className="push"></div>
         </div>
-          {/*<Footer />*/}
+
+        <Footer id='footer'/>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 class Signup extends React.Component {
 
@@ -51,19 +52,50 @@ class Signup extends React.Component {
 
 
   render() {
+    const style={
+      'maxWidth': '50vh'
+    }
       return (
-        <div className='ui container'>
-          <h1>Enter a new username and password</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div class="ui input">
-            <input type="text" name="username" placeholder="username" onChange={this.handleUsernameChange} value={this.state.username}/>
+
+        <div class="ui middle aligned center aligned grid">
+          <div style={style} class="column">
+            <h2 class="ui image header">
+            <div class="content">
+              Sign-Up
             </div>
-            <div class="ui input">
-            <input type="password" name="password" placeholder="password" onChange={this.handlePasswordChange} value={this.state.password}/>
+            </h2>
+            <form class="ui large form" onSubmit={this.handleSubmit}>
+              <div class="ui stacked secondary  segment">
+                <div class="field">
+                  <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" onChange={this.handleUsernameChange} value={this.state.username}/>
+                  </div>
+                </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" onChange={this.handlePasswordChange} value={this.state.password}/>
+                </div>
+              </div>
+                <button class="ui fluid large teal submit button" type="submit" value="Submit">
+                  SignUp
+                </button>
+              </div>
+            </form>
+
+            <div class="ui message">
+              <NavLink to="/login">Log In</NavLink>
             </div>
-            <input className='ui button' type="submit" value="Submit"/>
-          </form>
+
+          </div>
         </div>
+
+
+
+
+
+
       )
   }
 }

@@ -38,10 +38,10 @@ class ProfilePage extends React.Component {
 
         <h1>Welcome {this.props.username}! </h1>
 
-          <FileUploader userId={this.props.userId} />
+          <FileUploader {...this.props} userId={this.props.userId} />
         <br/>
 
-
+        <h3>Your Notes</h3>
         <div className="ui center aligned grid">
           {notes}
         </div>
