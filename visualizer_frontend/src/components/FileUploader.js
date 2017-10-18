@@ -1,5 +1,6 @@
 import Dropzone from 'react-dropzone'
 import React from 'react'
+import { Progress } from 'semantic-ui-react'
 
 
 class FileUploader extends React.Component {
@@ -9,7 +10,10 @@ class FileUploader extends React.Component {
     this.state = {
       category: '',
       text: '',
-      title: ''
+      title: '',
+      button: 'green',
+      button_msg: 'Upload Note First',
+      progress: 0
     }
 
     this.createNote = this.createNote.bind(this)
@@ -26,6 +30,7 @@ class FileUploader extends React.Component {
         this.setState({
           text: contents
         })
+        this.updateProgress()
       }.bind(this)
     }
   }
@@ -33,14 +38,43 @@ class FileUploader extends React.Component {
   setTitle = (event) => {
     this.setState({
       title: event.target.value
+    }, function (){
+      this.updateProgress()
     })
   }
 
   setCategory = (event) => {
     this.setState({
       category: event.target.value
+    }, function (){
+      this.updateProgress()
     })
   }
+
+  updateProgress = () => {
+    this.setState({ progress: Math.round(this.calcProgress()) })
+  }
+
+  calcProgress = () =>{
+    let num = 0
+
+    this.state.category !== '' ? num += 33.3 : null
+    this.state.text !== '' ? num += 33.3 : null
+    this.state.title !== '' ? num += 33.3 : null
+
+    if(num > 90){
+      this.setState({
+        button: 'yellow',
+        button_msg: 'Submit Note'
+      })
+    }
+
+
+
+    return num
+  }
+
+
 
 
   createNote(){
@@ -72,10 +106,11 @@ class FileUploader extends React.Component {
 
 
 
+
   render() {
     console.log(this.state)
-
-
+    let button = "ui " + this.state.button + " button"
+    let button_msg = this.state.button_msg
     return (
       <div className="ui raised padded text container segment">
           <div className="ui grid ">
@@ -106,6 +141,7 @@ class FileUploader extends React.Component {
                 <option value="Other">Other</option>
               </select>
 
+
               <div className="ui inverted divider"></div>
 
               <div className="ui input">
@@ -114,7 +150,13 @@ class FileUploader extends React.Component {
 
               <div className="ui inverted divider"></div>
 
-              <button className="ui blue button" onClick={this.createNote}> Submit Note </button>
+              <button className={button} onClick={this.createNote}> {button_msg}</button>
+
+              <div className="ui inverted divider"></div>
+
+              <Progress percent={this.state.progress} inverted progress success>
+
+              </Progress>
 
             </div>
 

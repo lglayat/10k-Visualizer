@@ -6,21 +6,8 @@ import { connect } from 'react-redux'
 
 class Header extends React.Component{
 
-  //localStorage.getItem('jwtToken') ? <div className="item" onClick={this.logout}> Log Out </div> :<div><div className="item"><NavLink to="/login">Login</NavLink></div><div className="item"><NavLink to="/signup">Sign up</NavLink></div></div> }
-
-  showLogout = () => {
-    return <div className="item" onClick={this.logout}><NavLink to="/">Log Out</NavLink></div>
-  }
-
-  showLogin = () => {
-      return <div className="item"><NavLink to="/login">Login</NavLink></div>
-  }
-  showSignup = () => {
-      return <div className="item"><NavLink to="/signup">Sign up</NavLink></div>
-  }
-
   showProfile = () => {
-    return <div className="item"><NavLink to="/profile">Profile</NavLink></div>
+    return <div className="green item"><NavLink to="/profile">Profile</NavLink></div>
   }
 
   logout = (props) => {
@@ -41,31 +28,21 @@ class Header extends React.Component{
     const hasToken = !!localStorage.getItem("jwtToken")
 
     return(
-        <div className="ui menu">
-          <a className="header item">
-            <NavLink to="/">Home</NavLink>
-          </a>
-          <a className="item">
-            <NavLink to="/categories">Categories</NavLink>
-          </a>
+        <div className="ui inverted menu">
+
+          <a className="olive item" href='/'>Home</a>
+
+          <NavLink className="item" to="/categories">Categories</NavLink>
 
           {this.showProfile()}
 
-
           <div className='right menu'>
 
-          { hasToken ?  <div className="item" onClick={this.logout}><NavLink to="/">Log Out</NavLink></div> : null }
+          { hasToken ?  <NavLink className="item" onClick={this.logout} to="/">Log Out</NavLink>: null }
 
-          { hasToken ? null : <div className="item"><NavLink to="/login">Login</NavLink></div> }
+          { hasToken ? null : <NavLink className="item" to="/login">Login</NavLink> }
 
-          { hasToken ? null : <div className="item"><NavLink to="/signup">Sign up</NavLink></div> }
-
-          {/*this.showLogout()*/}
-
-          {/*this.showLogin()*/}
-
-          {/*this.showSignup()*/}
-
+          { hasToken ? null : <NavLink className="item" to="/signup">Sign up</NavLink> }
 
           </div>
         </div>

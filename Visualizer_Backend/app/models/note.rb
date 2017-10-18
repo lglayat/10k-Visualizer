@@ -1,6 +1,8 @@
 class Note < ApplicationRecord
 
-  belongs_to :user
+  has_many :user_notes
+  has_many :users, through: :user_notes
+
   belongs_to :category, optional: true
 
 end

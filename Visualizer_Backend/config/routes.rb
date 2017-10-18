@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post '/notes/create', to: 'notes#create'
       get '/notes', to: 'notes#index'
       post '/signup', to: 'users#create'
+      post '/notes/buyNote', to: 'notes#buyNote'
     end
   end
 end

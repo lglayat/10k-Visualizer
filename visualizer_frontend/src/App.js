@@ -14,7 +14,8 @@ import NoteShowPage from './components/NoteShowPage'
 import Background from './resources/img/background.png';
 import CategoryPage from './components/CategoryPage'
 import SearchResults from './components/SearchResults'
-import Pdf from './components/Pdf'
+
+
 class App extends Component {
 
 
@@ -45,11 +46,10 @@ class App extends Component {
             <Route exact path="/profile" render={(props) => <ProfileContainer username={username} userId={userId} {...props} />}/>
             <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
             <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
-            <Route exact path='/notes/:id' render={(props) => <NoteShowPage noteId={NoteShowPage.id} {...props} /> } />
+            <Route exact path='/notes/:id' render={(props) => <NoteShowPage store={this.props.store} userId={userId} {...props} /> } />
             <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
             <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
             <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>
-            <Route exact path='/pdf' render={(props) => <Pdf {...props} />} />
             <Route exact path='/' render={(props) => <Homepage {...props} />} />
 
           </div>

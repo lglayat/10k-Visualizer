@@ -6,10 +6,13 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"], user_id: params["user"])
+    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"])
     @category = Category.find_by(name: params["note"]["category"])
-    @category.notes << @note
+
+    @user = User.find(params[:user])
+    @user.notes << @note
     if @note.save!
+      @category.notes << @note
       render json: @note
     end
   end
@@ -27,9 +30,20 @@ class Api::V1::NotesController < ApplicationController
 				@arr << n
 			end
 		end
-    
+
 
     render json: @arr
+  end
+
+  def buyNote
+    @note = Note.find(params[:note])
+    @user = User.find(params[:user])
+    if @user.notes.include?(@note) === true
+      render json: {status:false}
+    else
+      @user.notes << @note
+      rrender json: {status:true}
+    end
   end
 
 end
