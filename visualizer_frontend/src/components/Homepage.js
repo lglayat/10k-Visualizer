@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from '../resources/img/logo.png'
 import Searchbar from './Searchbar'
-import { Redirect } from 'react-router-dom'
+
 
 
 class Homepage extends React.Component{

@@ -14,7 +14,7 @@ import NoteShowPage from './components/NoteShowPage'
 import Background from './resources/img/background.png';
 import CategoryPage from './components/CategoryPage'
 import SearchResults from './components/SearchResults'
-
+import Pdf from './components/Pdf'
 class App extends Component {
 
 
@@ -49,9 +49,10 @@ class App extends Component {
             <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
             <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
             <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>
+            <Route exact path='/pdf' render={(props) => <Pdf {...props} />} />
             <Route exact path='/' render={(props) => <Homepage {...props} />} />
+
           </div>
-          <div className="push"></div>
         </div>
 
         <Footer id='footer'/>

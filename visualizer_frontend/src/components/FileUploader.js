@@ -46,25 +46,27 @@ class FileUploader extends React.Component {
   createNote(){
     const note = this.state
     const id = this.props.userId
-    const category = this.state.category
-    const body = JSON.stringify({note: note, user: id, category: category })
-    // got rid of return fetch
-    fetch("http://localhost:3000/api/v1/notes/create", {
-      method: 'post',
-      body: body,
-      headers: {
-        "Accept":"application/json",
-        "Content-Type":"application/json"
-      }
-    })
-      .then((res) => res.json())
-      .then((res) => this.setState({
-        category: '',
-        text: '',
-        title: ''
-      }))
-      .then((res) => this.props.history.push('/profile'))
-
+    if(note.category === '' || note.title === '' || note.text === '' || id < 1){
+      alert('Please make sure the category and file have been selected and the title has been filled in before submitting!')
+    } else {
+      const category = this.state.category
+      const body = JSON.stringify({note: note, user: id, category: category })
+      fetch("http://localhost:3000/api/v1/notes/create", {
+        method: 'post',
+        body: body,
+        headers: {
+          "Accept":"application/json",
+          "Content-Type":"application/json"
+        }
+      })
+        .then((res) => res.json())
+        .then((res) => this.setState({
+          category: '',
+          text: '',
+          title: ''
+        }))
+        .then((res) => this.props.history.push('/profile'))
+    }
 
   }
 

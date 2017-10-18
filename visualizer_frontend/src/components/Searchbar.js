@@ -1,6 +1,5 @@
 import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import { Redirect } from 'react-router-dom'
 
 
 class SearchBar extends React.Component{

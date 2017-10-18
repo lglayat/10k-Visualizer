@@ -30,7 +30,7 @@ class ProfilePage extends React.Component {
     let notes = null
 
     if( this.state.notes ){
-      notes = this.state.notes.map( note =><div class="five wide column"><NoteCard id={note.id} title={note.title} body={note.doc} /></div> )
+      notes = this.state.notes.map( note =><div className="five wide column"><NoteCard id={note.id} title={note.title} body={note.doc} /></div> )
     }
 
 		return (
