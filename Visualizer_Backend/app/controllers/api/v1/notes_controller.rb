@@ -27,6 +27,7 @@ class Api::V1::NotesController < ApplicationController
 				@arr << n
 			end
 		end
+    
 
     render json: @arr
   end
