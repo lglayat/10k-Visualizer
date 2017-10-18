@@ -1,5 +1,6 @@
 import React from 'react'
 import NoteCard from './NoteCard'
+import { Container, Divider } from 'semantic-ui-react'
 
 
 class SearchResults extends React.Component{
@@ -32,7 +33,6 @@ class SearchResults extends React.Component{
 
 
   render(){
-    console.log(this.state.notes)
 
     let notes = null
 
@@ -42,10 +42,15 @@ class SearchResults extends React.Component{
 
     return(
       <div class="ui container">
-        <h1>SearchResults </h1>
-        <div className="ui grid">
-          {notes}
-        </div>
+        <Container textAlign='center'>
+
+          <h1>SearchResults </h1>
+
+          <div className="ui center aligned grid">
+            {notes}
+          </div>
+
+        </Container>
       </div>)
   }
 }

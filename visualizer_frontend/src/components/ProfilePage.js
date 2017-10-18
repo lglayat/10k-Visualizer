@@ -2,6 +2,7 @@ import React from 'react'
 import NoteCard from './NoteCard'
 import FileUploader from './FileUploader'
 import { connect } from 'react-redux'
+import { Container, Divider } from 'semantic-ui-react'
 
 
 class ProfilePage extends React.Component {
@@ -41,10 +42,15 @@ class ProfilePage extends React.Component {
           <FileUploader {...this.props} userId={this.props.userId} />
         <br/>
 
-        <h3>Your Notes</h3>
-        <div className="ui center aligned grid">
-          {notes}
-        </div>
+
+          <Container textAlign='center'>
+                <h3>Your Notes</h3>
+            <div className="ui center aligned grid">
+              {notes}
+            </div>
+
+        </Container>
+
 			</div>
 		)
 	}

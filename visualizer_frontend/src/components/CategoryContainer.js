@@ -1,5 +1,6 @@
 import React from 'react'
 import CategoryCard from './CategoryCard'
+import { Container, Divider } from 'semantic-ui-react'
 
 
 class CategoryContainer extends React.Component{
@@ -26,9 +27,11 @@ class CategoryContainer extends React.Component{
 
     return(
       <div>
+        <Container textAlign='center'>
         <div className="ui center aligned grid">
           {categories}
         </div>
+        </Container>
     </div>
     )
   }
