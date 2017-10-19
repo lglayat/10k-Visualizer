@@ -1,24 +1,19 @@
-# README
+Noteslocker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Introduction
 
-Things you may want to cover:
+A backend API for an online marketplace for users to buy and sell notes for educational purposes.
 
-* Ruby version
+* Ruby version 2.3.1
+
+* Rails version 5.1.3
 
 * System dependencies
+  - bcrypt
+  - jwt
+  - rack
 
-* Configuration
-
-* Database creation
-
-* Database initialization
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  - run 'rails s' in your terminal
+  - once up and running, go to http://localhost:3000

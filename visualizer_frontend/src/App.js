@@ -42,7 +42,7 @@ class App extends Component {
         <div className="content">
           <Header id="header" isLoggedIn={isLoggedIn} {...this.props} />
 
-          <div id='content' style={style}  >
+          <div id='Site-content' style={style}  >
             <Route exact path="/profile" render={(props) => <ProfileContainer username={username} userId={userId} {...props} />}/>
             <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
             <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
