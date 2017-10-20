@@ -69,8 +69,6 @@ class FileUploader extends React.Component {
       })
     }
 
-
-
     return num
   }
 

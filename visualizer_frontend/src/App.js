@@ -11,7 +11,6 @@ import Homepage from './components/Homepage'
 import './App.css';
 import CategoryContainer from './components/CategoryContainer'
 import NoteShowPage from './components/NoteShowPage'
-import Background from './resources/img/background.png';
 import CategoryPage from './components/CategoryPage'
 import SearchResults from './components/SearchResults'
 
@@ -27,12 +26,12 @@ class App extends Component {
     const ProfileContainer = Authorize(ProfilePage)
 
     return (
-      <div className="App"  >
+      <div className="App" >
         <Header id="header" isLoggedIn={isLoggedIn} />
         <div id='Site-content' >
           <div id='non-homepage' >
             <Route exact path="/profile" render={(props) => <ProfileContainer username={username} userId={userId} {...props} />}/>
-            <Route exact path='/notes/:id' render={(props) => <NoteShowPage store={this.props.store} userId={userId} {...props} /> } />
+            <Route exact path='/notes/:id' render={(props) => <NoteShowPage store={this.props.store}  username={username} user={userId} {...props} /> } />
             <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
             <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
             <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>

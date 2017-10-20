@@ -57,49 +57,37 @@ class LoginForm extends React.Component {
     }
 
       return (
-
-
-      <div class="ui middle aligned center aligned grid">
-
-        <div style={style} class="column">
-          <h2 class="ui image header">
-
-          <div class="content">
+      <div className="ui middle aligned center aligned grid">
+        <div style={style} className="column">
+          <h2 className="ui image header">
+          <div className="content">
             Sign in here!
           </div>
         </h2>
-          <form class="ui large form" onSubmit={this.handleSubmit}>
-            <div class="ui stacked secondary  segment">
-              <div class="field">
-                <div class="ui left icon input">
-                  <i class="user icon"></i>
+          <form className="ui large form" onSubmit={this.handleSubmit}>
+            <div className="ui stacked secondary  segment">
+              <div className="field">
+                <div className="ui left icon input">
+                  <i className="user icon"></i>
                   <input type="text" onChange={this.handleUsernameChange} value={this.state.username}/>
                 </div>
               </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
+            <div className="field">
+              <div className="ui left icon input">
+                <i className="lock icon"></i>
                 <input type="password" onChange={this.handlePasswordChange} value={this.state.password}/>
               </div>
             </div>
-              <button class="ui fluid large teal submit button" type="submit" value="Submit">
+              <button className="ui fluid large teal submit button" type="submit" value="Submit">
                 Login
               </button>
             </div>
           </form>
-
-
-
-          <div class="ui message">
+          <div className="ui message">
             <NavLink to="/signup">Sign up</NavLink>
           </div>
-
         </div>
       </div>
-
-
-
-
       )
   }
 }
@@ -111,7 +99,5 @@ export function mapDispatchToProps(dispatch){
     }
   }
 }
-
-
 
 export default connect(null, mapDispatchToProps)(LoginForm)

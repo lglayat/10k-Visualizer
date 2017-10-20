@@ -3,9 +3,6 @@ import { NavLink } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 import { signOut } from '../actions/user'
 import { connect } from 'react-redux'
-import { Input } from 'semantic-ui-react'
-
-import Searchbar from './Searchbar'
 
 
 class Header extends React.Component{

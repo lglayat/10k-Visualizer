@@ -14,7 +14,6 @@ class ProfilePage extends React.Component {
 
 	componentDidMount(){
     const num = this.props.userId
-
     const url = "http://localhost:3000/api/v1/users/"
     console.log(this.props)
   	fetch(url + num)

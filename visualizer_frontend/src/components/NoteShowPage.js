@@ -1,5 +1,6 @@
 import React from 'react'
 import Downloader from './Downloader'
+import { connect } from 'react-redux'
 
 
 class NoteShowPage extends React.Component{
@@ -7,30 +8,28 @@ class NoteShowPage extends React.Component{
   constructor() {
     super()
     this.state = {
-      note: '',
-      users: [],
-      button: 'green'
+      title: '',
+      body: '',
+      users: []
     }
     this.buyNote = this.buyNote.bind(this)
   }
 
-
   componentDidMount(){
     const noteId = this.props.location.pathname.split('/').pop()
-    let me = this.props.store.getState().userInfo.id
     const url = "http://localhost:3000/api/v1/notes/"
      fetch(url + noteId)
       .then(resp => resp.json())
       .then(resp => this.setState({
-        note: resp,
-        me: me
+        title: resp.title,
+        body: resp.doc,
+        users: resp.users
       }))
-
   }
 
   buyNote(){
     const note_Id = this.props.location.pathname.split('/').pop()
-    const user_Id = this.props.store.getState().userInfo.id
+    const user_Id = this.props.currentUserId
     const body = JSON.stringify({note: note_Id, user: user_Id })
     fetch("http://localhost:3000/api/v1/notes/buyNote", {
       method: 'post',
@@ -41,43 +40,43 @@ class NoteShowPage extends React.Component{
       }
     })
     .then(res => this.props.history.push('/profile') )
-
   }
 
+  own = () => {
+    let owners = this.state.users
+    for(let i in owners ){
+      if(owners[i].id === this.props.currentUserId){
+        return true
+      }
+    }
+    return false
+  }
 
-
-
+  isLoggedIn = () => {
+    if(this.props.currentUserId){
+      return true
+    } else {
+      return false
+    }
+  }
 
   render(){
-
-    let noteTitle = null
-    let noteBody = null
-
-    if( this.state.note !== ''){
-        noteTitle = this.state.note.title
-        noteBody = this.state.note.doc
-    }
-
-    let button = "ui " + this.state.button + " button"
-
+    console.log("Logged in: " + this.isLoggedIn() , "own: " + this.own())
     return(
-
       <div className="ui raised very padded text container segment">
-        <h2 className="ui header">{noteTitle}</h2>
-          <p>{noteBody}</p>
-        <button onClick={this.buyNote} className={button}>
-          Save Note
-        </button>
-
-        <div className="ui inverted divider"></div>
-
-
-        <Downloader content={noteBody} title={noteTitle} />
-
+        <h2 className="ui header">{this.state.title}</h2>
+          { (this.isLoggedIn() === true || this.own() === true) ? <p>{ this.state.body }</p> : <p>{this.state.body.substr(0, 200) + "...Purchase the note for full access!"}</p>  }
+          { (this.isLoggedIn() === true && this.own() === false) ? <button onClick={this.buyNote} className="ui green button" >Buy Note </button>: null}
+          { (this.isLoggedIn() === true && this.own() === true ) ? <Downloader content={this.state.body} title={this.state.title}/> : null }
       </div>
-
       )
   }
 }
 
-export default NoteShowPage
+const mapStateToProps = (state) => {
+  return {
+      currentUserId: state.userInfo.id
+  }
+}
+
+export default connect(mapStateToProps)(NoteShowPage)

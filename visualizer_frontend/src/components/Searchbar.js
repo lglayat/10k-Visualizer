@@ -9,11 +9,8 @@ class SearchBar extends React.Component{
     this.state ={
       input: ''
     }
-
-
     this.search = this.search.bind(this)
   }
-
 
   setInput = (event) => {
     this.setState({
@@ -23,13 +20,11 @@ class SearchBar extends React.Component{
 
   search(){
     const searchVal = this.state.input
-    console.log(searchVal)
     this.props.history.push({
         pathname: '/searchResults',
         state: { searchVal: this.state.input }
     })
   }
-
 
   render(){
     console.log(this.state.input)
