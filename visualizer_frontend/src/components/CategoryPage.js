@@ -1,7 +1,7 @@
 import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import NoteCard from './NoteCard'
-import { Container, Divider } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 class CategoryPage extends React.Component{
 
@@ -32,13 +32,10 @@ class CategoryPage extends React.Component{
     }
 
     return(
-
       <Container textAlign='center'>
           <h1>All {this.state.name} notes</h1>
           {notes}
-
-    </Container>
-  
+      </Container>
 	)}
 }
 

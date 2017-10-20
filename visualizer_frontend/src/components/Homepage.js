@@ -13,15 +13,18 @@ class Homepage extends React.Component{
     }
 
 
-    return(<div>
+    return(
             <div className="ui raised padded text container segment">
 
               <img src={Logo} alt="/" style={logoStyle} />
 
+              <div className="ui inverted divider"></div>
+
+
               <Searchbar {...this.props} />
 
             </div>
-          </div>
+
         )
   }
 }

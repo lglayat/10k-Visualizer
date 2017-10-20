@@ -1,6 +1,6 @@
 import React from 'react'
 import NoteCard from './NoteCard'
-import { Container, Divider } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 
 class SearchResults extends React.Component{
@@ -36,8 +36,11 @@ class SearchResults extends React.Component{
 
     let notes = null
 
-    if( this.state.notes ){
+    if( this.state.notes.length > 1 ){
       notes = this.state.notes.map( note =><div class="five wide column"><NoteCard id={note.id} title={note.title} body={note.doc} /></div> )
+    } else  {
+      console.log("NAH NIGA U GOOD")
+      notes = <div className='ui raised very padded text container segment'> No results found. Please refine your search</div>
     }
 
     return(

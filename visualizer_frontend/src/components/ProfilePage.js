@@ -2,7 +2,7 @@ import React from 'react'
 import NoteCard from './NoteCard'
 import FileUploader from './FileUploader'
 import { connect } from 'react-redux'
-import { Container, Divider } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 
 class ProfilePage extends React.Component {
@@ -35,7 +35,7 @@ class ProfilePage extends React.Component {
     }
 
 		return (
-			<div>
+			<div id='profile'>
 
         <h1>Welcome {this.props.username}! </h1>
 

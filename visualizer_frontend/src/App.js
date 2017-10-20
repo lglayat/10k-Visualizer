@@ -26,35 +26,23 @@ class App extends Component {
     const AuthLoginForm = Authorize(LoginForm)
     const ProfileContainer = Authorize(ProfilePage)
 
-    const wrapperStyle = {
-      backgroundImage: `url(${Background})`,
-    };
-
-    const style={
-      marginBottom: '100px'
-    }
-
-
     return (
-      <div className="App" style={wrapperStyle}>
-
-
-        <div className="content">
-          <Header id="header" isLoggedIn={isLoggedIn} {...this.props} />
-
-          <div id='Site-content' style={style}  >
+      <div className="App"  >
+        <Header id="header" isLoggedIn={isLoggedIn} />
+        <div id='Site-content' >
+          <div id='non-homepage' >
             <Route exact path="/profile" render={(props) => <ProfileContainer username={username} userId={userId} {...props} />}/>
-            <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
-            <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
             <Route exact path='/notes/:id' render={(props) => <NoteShowPage store={this.props.store} userId={userId} {...props} /> } />
             <Route exact path='/categories/:id' render={(props) => <CategoryPage isLoggedIn={isLoggedIn}  {...props} />} />
             <Route exact path='/categories' render={(props) => <CategoryContainer {...props} /> } />
             <Route exact path='/searchResults' render={(props) => <SearchResults {...props} /> }/>
-            <Route exact path='/' render={(props) => <Homepage {...props} />} />
-
           </div>
+          <div id='login-signup'>
+            <Route exact path="/login" render={(props)=><AuthLoginForm onLogin={this.login} {...props} />}/>
+            <Route exact path="/signup" render={(props)=><Signup {...props} />}/>
+          </div>
+          <Route exact path='/' render={(props) => <Homepage {...props} />} />
         </div>
-
         <Footer id='footer'/>
       </div>
     );

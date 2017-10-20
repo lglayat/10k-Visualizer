@@ -1,6 +1,6 @@
 import React from 'react'
 import CategoryCard from './CategoryCard'
-import { Container, Divider } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
 
 class CategoryContainer extends React.Component{
@@ -25,8 +25,9 @@ class CategoryContainer extends React.Component{
       categories = this.state.categories.map( category => <div className="five wide column"><CategoryCard key={category.id} id={category.id} name={category.name} /></div> )
     }
 
+
     return(
-      <div>
+      <div id='categories' >
         <Container textAlign='center'>
         <div className="ui center aligned grid">
           {categories}
