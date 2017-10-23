@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20171018182706) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "doc"
-    t.integer "user_id"
     t.integer "category_id"
+    t.integer "count"
   end
 
   create_table "user_notes", force: :cascade do |t|

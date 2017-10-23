@@ -1,7 +1,6 @@
 import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import NoteCard from './NoteCard'
-import { Container } from 'semantic-ui-react'
 
 class CategoryPage extends React.Component{
 
@@ -28,14 +27,19 @@ class CategoryPage extends React.Component{
     let notes = null
 
     if( this.state.notes ){
-      notes = this.state.notes.map( note => <NoteCard id={note.id} title={note.title} body={note.doc} /> )
+      notes = this.state.notes.map( note =><div className="five wide column"> <NoteCard id={note.id} title={note.title} body={note.doc} /></div> )
     }
 
     return(
-      <Container textAlign='center'>
-          <h1>All {this.state.name} notes</h1>
+      <div class="ui container">
+
+        <h1>All {this.state.name} notes</h1>
+
+        <div className="ui center aligned grid">
           {notes}
-      </Container>
+        </div>
+
+    </div>
 	)}
 }
 

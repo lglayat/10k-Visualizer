@@ -22,7 +22,7 @@ class SearchBar extends React.Component{
     const searchVal = this.state.input
     this.props.history.push({
         pathname: '/searchResults',
-        state: { searchVal: this.state.input }
+        state: { searchVal: searchVal }
     })
   }
 

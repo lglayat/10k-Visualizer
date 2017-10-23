@@ -7,8 +7,8 @@ class Footer extends React.Component{
   render(){
     return(
       <div>
-      <div className="ui inverted vertical footer segment form-page">
-        <div className="ui container">
+      <div className="ui vertical footer segment form-page" style={{backgroundColor:'#C0C0C0'}} >
+        <div className="ui container" >
           Noteslocker 2017. All Rights Reserved
         </div>
       </div>

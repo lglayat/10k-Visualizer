@@ -9,13 +9,12 @@ class ProfilePage extends React.Component {
 
   state ={
     notes: [],
-    curr: this.props.currentUser
+    curr: this.props.user
   }
 
 	componentDidMount(){
-    const num = this.props.userId
+    const num = this.props.user.id
     const url = "http://localhost:3000/api/v1/users/"
-    console.log(this.props)
   	fetch(url + num)
   	.then(resp => resp.json())
     .then(resp => {
@@ -26,7 +25,6 @@ class ProfilePage extends React.Component {
 	}
 
 	render() {
-
     let notes = null
 
     if( this.state.notes ){
@@ -36,18 +34,17 @@ class ProfilePage extends React.Component {
 		return (
 			<div id='profile'>
 
-        <h1>Welcome {this.props.username}! </h1>
+        <h1>Welcome {this.props.user.username}! </h1>
 
-          <FileUploader {...this.props} userId={this.props.userId} />
+        <FileUploader {...this.props} userId={this.props.userId} />
         <br/>
 
+        <Container textAlign='center'>
+          <h3>Your Notes</h3>
 
-          <Container textAlign='center'>
-                <h3>Your Notes</h3>
-            <div className="ui center aligned grid">
-              {notes}
-            </div>
-
+          <div className="ui center aligned grid">
+            {notes}
+          </div>
         </Container>
 
 			</div>

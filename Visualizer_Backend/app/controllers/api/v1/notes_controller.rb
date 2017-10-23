@@ -6,9 +6,8 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"])
+    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"], count: 1)
     @category = Category.find_by(name: params["note"]["category"])
-
     @user = User.find(params[:user])
     @user.notes << @note
     if @note.save!
@@ -41,8 +40,9 @@ class Api::V1::NotesController < ApplicationController
     if @user.notes.include?(@note) === true
       render json: {status:false}
     else
+      @note.count = @note.count + 1
       @user.notes << @note
-      rrender json: {status:true}
+      render json: {status:true}
     end
   end
 

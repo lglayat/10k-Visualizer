@@ -46,7 +46,7 @@ class Signup extends React.Component {
         password: ""
       })
     })
-    .then(resp => this.props.history.replace('/', null))
+    .then(resp => this.props.history.replace('/login', null))
 
   }
 

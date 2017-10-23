@@ -10,6 +10,7 @@ class NoteShowPage extends React.Component{
     this.state = {
       title: '',
       body: '',
+      count: 0,
       users: []
     }
     this.buyNote = this.buyNote.bind(this)
@@ -23,6 +24,7 @@ class NoteShowPage extends React.Component{
       .then(resp => this.setState({
         title: resp.title,
         body: resp.doc,
+        count: resp.count,
         users: resp.users
       }))
   }
@@ -61,11 +63,12 @@ class NoteShowPage extends React.Component{
   }
 
   render(){
-    console.log("Logged in: " + this.isLoggedIn() , "own: " + this.own())
+    console.log("Count:" + this.state.count)
     return(
       <div className="ui raised very padded text container segment">
         <h2 className="ui header">{this.state.title}</h2>
-          { (this.isLoggedIn() === true || this.own() === true) ? <p>{ this.state.body }</p> : <p>{this.state.body.substr(0, 200) + "...Purchase the note for full access!"}</p>  }
+        <h4> Times purchased: {this.state.count} </h4>
+          { (this.isLoggedIn() === true && this.own() === true) ? <p>{ this.state.body }</p> : <p>{this.state.body.substr(0, 250)} <b>... Purchase the note for full access!</b></p>  }
           { (this.isLoggedIn() === true && this.own() === false) ? <button onClick={this.buyNote} className="ui green button" >Buy Note </button>: null}
           { (this.isLoggedIn() === true && this.own() === true ) ? <Downloader content={this.state.body} title={this.state.title}/> : null }
       </div>

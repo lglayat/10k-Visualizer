@@ -12,7 +12,6 @@ class Homepage extends React.Component{
       height: '150px'
     }
 
-
     return(
             <div className="ui raised padded text container segment">
 
@@ -20,11 +19,9 @@ class Homepage extends React.Component{
 
               <div className="ui inverted divider"></div>
 
-
               <Searchbar {...this.props} />
 
             </div>
-
         )
   }
 }

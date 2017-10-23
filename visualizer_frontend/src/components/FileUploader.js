@@ -115,9 +115,11 @@ class FileUploader extends React.Component {
 
             <div className="eight wide column">
               <div className='ui center aligned container'>
-                <Dropzone  onDrop={this.onDrop}>
+
+                <Dropzone  onDrop={this.onDrop} accept=".txt">
                   <p>Try dropping a file here, or click to select a file to upload.</p><p> Only *.txt files will be accepted. </p>
                 </Dropzone>
+
               </div>
             </div>
 
