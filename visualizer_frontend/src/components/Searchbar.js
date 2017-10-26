@@ -27,7 +27,6 @@ class SearchBar extends React.Component{
   }
 
   render(){
-    console.log(this.state.input)
     return(
       <div >
         <form>

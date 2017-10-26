@@ -63,7 +63,6 @@ class NoteShowPage extends React.Component{
   }
 
   render(){
-    console.log("Count:" + this.state.count)
     return(
       <div className="ui raised very padded text container segment">
         <h2 className="ui header">{this.state.title}</h2>

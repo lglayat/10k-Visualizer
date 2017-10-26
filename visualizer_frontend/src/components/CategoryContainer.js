@@ -22,7 +22,7 @@ class CategoryContainer extends React.Component{
     let categories = null
 
     if( this.state.categories.length > 0 ){
-      categories = this.state.categories.map( category => <div className="five wide column"><CategoryCard key={category.id} id={category.id} name={category.name} /></div> )
+      categories = this.state.categories.map( category => <div key={category.id} className="five wide column"><CategoryCard key={category.id} id={category.id} name={category.name} /></div> )
     }
 
 

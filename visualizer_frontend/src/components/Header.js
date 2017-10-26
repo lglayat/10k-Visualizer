@@ -1,12 +1,8 @@
-
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 import { signOut } from '../actions/user'
 import { connect } from 'react-redux'
-import { Menu } from 'semantic-ui-react'
-
-const colorsA = ['red', 'orange', 'yellow', 'olive', 'green', 'teal']
 
 
 class Header extends React.Component{
@@ -22,7 +18,8 @@ class Header extends React.Component{
 
     return(
       <div className="ui inverted menu">
-          <a class="item" href='/'>Home</a>
+          <a className="item" href='/'>Home</a>
+
           <NavLink className="item" to="/categories">Categories</NavLink>
           <div className="green item"><NavLink to="/profile">Profile</NavLink></div>
 

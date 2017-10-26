@@ -36,7 +36,7 @@ class ProfilePage extends React.Component {
 
         <h1>Welcome {this.props.user.username}! </h1>
 
-        <FileUploader {...this.props} userId={this.props.userId} />
+        <FileUploader {...this.props} userId={this.props.user.id} />
         <br/>
 
         <Container textAlign='center'>

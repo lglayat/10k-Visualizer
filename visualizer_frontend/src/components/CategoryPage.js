@@ -27,7 +27,7 @@ class CategoryPage extends React.Component{
     let notes = null
 
     if( this.state.notes ){
-      notes = this.state.notes.map( note =><div className="five wide column"> <NoteCard id={note.id} title={note.title} body={note.doc} /></div> )
+      notes = this.state.notes.map( note =><div key={note.id} className="five wide column"> <NoteCard key={note.id} id={note.id} title={note.title} body={note.doc} /></div> )
     }
 
     return(

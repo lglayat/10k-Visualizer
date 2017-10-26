@@ -6,7 +6,7 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"], count: 1)
+    @note = Note.new(title: params["note"]["title"], doc: params["note"]["text"], count: 0)
     @category = Category.find_by(name: params["note"]["category"])
     @user = User.find(params[:user])
     @user.notes << @note
@@ -29,7 +29,6 @@ class Api::V1::NotesController < ApplicationController
 				@arr << n
 			end
 		end
-
 
     render json: @arr
   end
